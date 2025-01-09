@@ -1,0 +1,60 @@
+<!-- borrow_book.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrow Book</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f5f5f5;
+        }
+        form {
+            margin-top: 50px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 50%;
+            margin: auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        select, input {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            width: 80%;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4285F4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #357AE8;
+        }
+    </style>
+</head>
+<body>
+    <h1>Borrow a Book</h1>
+    <form action="/borrow_book" method="POST">
+        <select name="book_id" required>
+            <option value="" disabled selected>Select a Book</option>
+            {% for book in books %}
+            <option value="{{ book.id }}">{{ book.title }} by {{ book.author }}</option>
+            {% endfor %}
+        </select>
+        <select name="patron_id" required>
+            <option value="" disabled selected>Select a Patron</option>
+            {% for patron in patrons %}
+            <option value="{{ patron.id }}">{{ patron.name }}</option>
+            {% endfor %}
+        </select>
+        <input type="date" name="borrow_date" required>
+        <button type="submit">Borrow Book</button>
+    </form>
+</body>
+</html>
