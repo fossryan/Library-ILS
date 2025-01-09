@@ -3,8 +3,8 @@
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "hello-fly-flask"
-primary_region = "ams"
+app = "Library-ILS"
+primary_region = "bos"
 
 [build]
   builder = "paketobuildpacks/builder:base"
